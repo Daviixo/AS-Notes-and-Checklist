@@ -110,7 +110,7 @@ function createTemplate(){
     + '<br><br><b>Summary of Issue or Request:</b><br>' + getSummary
     + '<br><br><b>Steps Taken:</b><br>' + getStepsTaken
     + '<br><br><b>Resolved/Escalated: </b>' + getResolution
-    + '<br><h2><b>CD Check List</b></h2><br>'
+    + '<br><br><h2><b>CD Check List</b></h2><br>'
     + '<b>Verified CC: </b>' + textgetVerifiedCC
     + '<br><b>Verified Billing Address: </b>' + textgetVerifiedBillingAddress
     + '<br><b>Highlight Features: </b>' + textgetHighlightFeatures
