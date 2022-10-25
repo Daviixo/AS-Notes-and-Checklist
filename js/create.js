@@ -5,59 +5,124 @@ function createTemplate(){
     //Var today could be useful in the future, leaving that here for reference
     var today = new Date().toLocaleDateString('en-us', { hour:"2-digit", minute:"2-digit", weekday:"long", year:"numeric", month:"short", day:"numeric"});
 
-    var cTittle = document.getElementById("sptittle").value;
+    let getProduct = document.getElementById("product").value;
 
-    const utcStr = new Date().toUTCString();
-    console.log(utcStr);
+    let getContactName = document.getElementById("contactName").value;
 
-    var cImpact = document.getElementById("impact").value;
+    let getEmail = document.getElementById("email").value;
 
-    var cReports = document.getElementById("customerReports").value;
+    let getPhoneNumber = document.getElementById("phoneNumber").value;
 
-    var cSlackChannel = document.getElementById("slackChannel").value;
+    let getSummary = document.getElementById("summary").value;
 
-    var e = document.getElementById("incidentType");
-    var cIncidentType = e.value;
+    let getStepsTaken = document.getElementById("stepsTaken").value;
 
-    var confBridge = "(805) 416-0601 Pin: 13554";
+    let getResolution = document.getElementById("resEsc").value;
 
-    var selected = [];
-    for (var option of document.getElementById('products').options)
-    {
-        if (option.selected) {
-            selected.push(" " + option.value);
-        }
+    // Getting info from checkboxes, this will return "true" or "false"
+
+    let getVerifiedCC = document.getElementById("vcc").checked;
+
+    if (getVerifiedCC === true){
+
+        textgetVerifiedCC = "✓";
+
+    }else{
+
+        textgetVerifiedCC = "x";
+        
+    }
+    
+    let getVerifiedBillingAddress = document.getElementById("vba").checked;
+
+    if (getVerifiedBillingAddress === true){
+
+        textgetVerifiedBillingAddress = "✓";
+
+    }else{
+
+        textgetVerifiedBillingAddress = "x";
+
     }
 
-    var finalTitle = cIncidentType + " - " + selected + " - " + cTittle;
+    let getHighlightFeatures = document.getElementById("hf").checked;
 
-    //alert("Creating templates for: " + selected);
+    if (getHighlightFeatures === true){
 
+        textgetHighlightFeatures = "✓";
 
-    //FYI: IMPACT == ISSUE!
+    }else{
 
-    // This will be our first template - External Status Page Template:
-    //[PRODUCT] - [ISSUE]
+        textgetHighlightFeatures = "x";
+
+    }
+
+    let getRebuttals = document.getElementById("reb").checked;
+
+    if (getRebuttals === true){
+
+        textgetRebuttals = "✓";
+
+    }else{
+
+        textgetRebuttals = "x";
+
+    }
+
+    let getSurvey = document.getElementById("survey").checked;
+
+    if (getSurvey === true){
+
+        textgetSurvey = "✓";
+
+    }else{
+
+        textgetSurvey = "x";
+
+    }
+
+    let getComebackStatement = document.getElementById("cs").checked;
+
+    if (getComebackStatement === true){
+
+        textgetComebackStatement = "✓";
+
+    }else{
+
+        textgetComebackStatement = "x";
+
+    }
+
+    // End of checkboxes
+
+    let getMovingWithComp = document.getElementById("movingWithComp").value;
+
+    let getCompsName = document.getElementById("compsName").value;
 
     var tab = window.open('about:blank', '_blank');
 
-    html = '<title>Results - Incidents Templates</title><br><strong> External Status Page Template</strong><br><br>' + selected + ' - ' + cTittle
-    + '<br><br>We are actively investigating reports that some ' + selected + ' customers may be '
-    + cImpact + '. <br><br>Our engineers are working to resolve the issue and will provide another update shortly.' +  
-
-    '<br><br><strong>Internal Status Page Template:</strong><br><br>' + finalTitle + '<br><br></bnr>Product Impact - ' + selected +
-    '<br>Customer Reports - ' + cReports + '<br>Customer Impact - Customers may be ' + cImpact + '<br>Slack Channel - ' + cSlackChannel + '<br>Conf. Bridge - ' + 
-    confBridge + ' ' + '<a href="https://www.uberconference.com/cloudsupport">https://www.uberconference.com/cloudsupport</a>' +
-    '<br><br><strong>Comms Response Template:</strong><br><br>We are currently having a ' + cIncidentType + ' incident for ' + selected + ' where users are ' + cImpact + '.' +
-    '<br>Status pages are being sent at this moment. Please thread the questions in this message.<br>Slack incident channel ' + cSlackChannel + 
-    '<br><br>Your friends:<br><img src="images/lminoclogo.png" alt="NOC_Logo" width="124" height="150">' +
-    '<br><br><strong>DONT FORGET TO SEND THE SLACK UPDATES</strong>'
+    html = '<title>Results - SA, Notes & Checklist</title><br><strong>Results - SA, Notes & Checklist</strong><br><br>' 
+    + '<b>Note created at: </b> ' + today
+    + '<br><br><b>Product: </b>' + getProduct
+    + '<br><b>Contact Name: </b>' + getContactName
+    + '<br><b>Email: </b>' + getEmail
+    + '<br><b>Phone Number: </b>' + getPhoneNumber
+    + '<br><br><b>Summary of Issue or Request:</b><br>' + getSummary
+    + '<br><br><b>Steps Taken:</b><br>' + getStepsTaken
+    + '<br><br><b>Resolved/Escalated: </b>' + getResolution
+    + '<br><h2><b>CD Check List</b></h2><br>'
+    + '<b>Verified CC: </b>' + textgetVerifiedCC
+    + '<br><b>Verified Billing Address: </b>' + textgetVerifiedBillingAddress
+    + '<br><b>Highlight Features: </b>' + textgetHighlightFeatures
+    + '<br><b>Rebuttals (2): </b>' + textgetRebuttals
+    + '<br><b>Survey: </b>' + textgetSurvey
+    + '<br><b>Comeback Statement: </b>' + textgetComebackStatement
+    + '<br><br><b>Moving with Competitor: </b>' + getMovingWithComp
+    + '<br><b>Competitors Name: </b>' + getCompsName
+    + '<br><br><b><i>--- Made by: SRE/NOC David Díaz ---</i></b>'
 
     tab.document.write(html);
-    tab.document.close(); 
-
-
-    console.log(today);
+    tab.document.close();
         
     } catch (error) {
         console.log("Something went wrong :( Error shows:\n" + error)
